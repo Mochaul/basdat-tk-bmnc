@@ -1,9 +1,65 @@
-{% extends "layout/base.html" %}
+<!DOCTYPE html>
 {% load staticfiles %}
-{% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-<div class="container">
-  <h1>6. profil pribadi</h1>
-  <h1>7. Daftar berita dimiliki</h1>
-</div>
-{% endblock %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/profil.css' %}"> </head>
+
+<body class="">
+  <div class="py-5 bg-secondary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="#" class="active nav-link" target="_blank">
+                <i class="fa fa-home fa-home"></i>&nbsp;Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#" target="_blank">Owned Article</a>
+            </li>
+          </ul>
+          <h1 class="display-1 bg-gradient">Profile</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 bg-secondary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="">Hello, [username] !</h1>
+          <ol class="">
+            <li class="">Full Name &nbsp; &nbsp; : &nbsp; &nbsp;&nbsp;</li>
+            <li>Username &nbsp; &nbsp; :</li>
+            <li>Birth Place &nbsp; &nbsp;:</li>
+            <li class="">Birth Date &nbsp; &nbsp; :</li>
+            <li>Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:</li>
+            <li>Nomor HP &nbsp; &nbsp;:</li>
+            <li>Role &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 bg-secondary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="blockquote bg-gradient bg-dark">
+            <p class="mb-0">BMNC Corp.</p>
+            <div class="blockquote-footer text-dark">"THROUGH READING WE CAN BE A BETTER PERSON"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
