@@ -5,9 +5,13 @@
     <meta charset="utf-8">
     <meta name="description" content="friendtogo">
     <meta name="author" content="rpl-5a">
-    <!-- bootstrap csss -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bmnc.css' %}" />
+        <!-- CSS dependencies -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+      <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+      <script src="{% static 'js/navbar-ontop.js' %}"></script>
+      <!-- Script: Animated entrance -->
+      <script src="{% static 'js/animate-in.js' %}"></script>
 
     <title>
         BMNC
@@ -20,7 +24,6 @@
             {% include "partials/header.html" %}
         </header>
         <content>
-            <div class="container">
                 {% block content %}
                  <!-- content goes here -->
                 {% endblock %}
@@ -32,8 +35,11 @@
         {% include "partials/footer.html" %}
     </footer>
 
-    <!-- Jquery n Bootstrap Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- JavaScript dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Script: Smooth scrolling between anchors in the same page -->
+    <script src="{% static 'js/smooth-scroll.js' %}"></script>
 </body>
 </html>

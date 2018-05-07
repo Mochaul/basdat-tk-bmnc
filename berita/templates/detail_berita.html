@@ -2,10 +2,57 @@
 {% load staticfiles %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-<div class="container">
-  <h1>Detail berita</h1>
-  <h1>9. Memberikan Rating</h1>
-  <h1>10. Memberikan komentar</h1>
-  <h1>11. Isi berita dan komentar</h1>
+<div class="align-items-center cover py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 p-3">
+        <h1>Ini Berita</h1>
+        <p> average rating: 4.5 </p>
+        <div class="tab-content mt-2">
+          <p style="text-align: justify;">
+            On modern operating systems, IO, for input/output, is a way for data to be exchanged with peripherals. This includes reading or writing to disk, or SSD, sending or receiving data over the network, displaying data to the monitor, receiving keyboard and mouse input, etc.
+          </p>
+        </div>
+      </div>
+    </div>
+    <h3>Komentar</h3>
+    <div class="row">
+      <div class="col-lg-2 p-3">
+        <img class="img-circle"
+          src="http://www.engr.uconn.edu/~gelyko/images/people_pic/anonymous.png"
+          width="70" height="70">
+      </div>
+      <div class="col-lg-10 p-3">
+        <div class="tab-content mt-2">
+          <p style="text-align: justify;">
+            This asynchronous mechanism is called hardware interrupt. Think of the simple case, where the CPU would ask the peripheral 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
+            <form class="">
+                <div class="form-group">
+                  <label>Komentar</label>
+                  <input type="text" class="form-control" placeholder="text">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-lg-2">
+            <form class="">
+                <div class="form-group">
+                  <label>Rating</label>
+                  <select class="form-control" name="tipe" id="register_tipe">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
