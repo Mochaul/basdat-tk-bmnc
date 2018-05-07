@@ -18,10 +18,12 @@ from django.contrib import admin
 from authentication import urls as authentication
 from profil import urls as profil
 from berita import urls as berita
+from polling import urls as polling
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(berita, namespace='berita')),
     url(r'^akun/', include(authentication, namespace='authentication')),
     url(r'^profil/', include(profil, namespace='profil')),
-    url(r'^', include(berita, namespace='berita'))
+    url(r'^polling/', include(polling, namespace='polling')),
 ]
