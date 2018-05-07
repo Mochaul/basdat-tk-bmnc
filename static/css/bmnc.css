@@ -1,0 +1,22 @@
+body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  align-items: space-between;
+}
+
+.footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    height: 30px;
+}
+.navbar-static-top {
+  margin-bottom: 19px;
+}

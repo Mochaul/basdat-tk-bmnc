@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="friendtogo">
+    <meta name="author" content="rpl-5a">
+    <!-- bootstrap csss -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bmnc.css' %}" />
+
+    <title>
+        BMNC
+    </title>
+</head>
+
+<body>
+    <div>
+        <header>
+            {% include "partials/header.html" %}
+        </header>
+        <content>
+            <div class="container">
+                {% block content %}
+                 <!-- content goes here -->
+                {% endblock %}
+            </div>
+
+        </content>
+    </div>
+    <footer>
+        {% include "partials/footer.html" %}
+    </footer>
+
+    <!-- Jquery n Bootstrap Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
