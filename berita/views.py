@@ -18,7 +18,7 @@ def daftar_berita(request):
 
 
 def detail_berita(request, url_berita):
-    berita = Berita.objects.get(url=url_berita)
+    berita = Berita.objects.raw("SELECT * FROM %s WHERE url='%s'" % (Berita._meta.db_table, url_berita))[0]
     riwayat = Riwayat.objects.filter(url_berita=url_berita).last()
     daftar_komentar = Komentar.objects.filter(url_berita=url_berita)
     response['berita'] = berita
