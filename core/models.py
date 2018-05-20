@@ -49,8 +49,8 @@ class Honor(models.Model):
 
 class Komentar(models.Model):
     id = models.IntegerField(primary_key=True)
-    tanggal = models.DateTimeField()
-    jam = models.TimeField()
+    tanggal = models.DateTimeField(auto_now=True)
+    jam = models.TimeField(auto_now=True)
     konten = models.CharField(max_length=100)
     nama_user = models.CharField(max_length=50)
     email_user = models.CharField(max_length=50)
