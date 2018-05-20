@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from core.models import *
 
 response = {}
 
@@ -17,5 +18,12 @@ def daftar_berita(request):
 
 
 def detail_berita(request, url_berita):
+    berita = Berita.objects.get(url=url_berita)
+    riwayat = Riwayat.objects.filter(url_berita=url_berita).last()
+    daftar_komentar = Komentar.objects.filter(url_berita=url_berita)
+    response['berita'] = berita
+    response['riwayat'] = riwayat
+    response['daftar_komentar'] = daftar_komentar
+
     html = 'detail_berita.html'
     return render(request, html, response)
