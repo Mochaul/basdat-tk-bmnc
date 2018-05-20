@@ -80,13 +80,31 @@ WSGI_APPLICATION = 'bmnc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+        'OPTIONS': {
+            'options': '-c search_path=bmnc'
+        },
     }
 }
-#If Using Heroku Environemnt, then Use Database Setting on Heroku
+
 if PRODUCTION:
-    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'options': '-c search_path=public'
+        },
+    }
+
 
 
 # Password validation
