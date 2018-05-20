@@ -30,7 +30,7 @@
             <h4 class="mb-4 text-center">Register as a Narasumber</h4>
             <div class="form-group">
               <label>Role : </label>
-              <select>
+              <select onchange="checkRole(this)">
                 <option value="mahasiswa">Mahasiswa</option>
                 <option value="staff">Staff</option>
                 <option value="dosen">Dosen</option>
@@ -59,11 +59,11 @@
             <div class="form-group">
               <label>Nomor HP</label>
               <input class="form-control" placeholder="Your phone number"> </div>
-            <div class="form-group">
+            <div class="form-group" id="status-kemahasiswaan">
               <label>Status Kemahasiswaan</label>
               <input class="form-control" placeholder="Your student status"> </div>
-            <div class="form-group">
-              <label>ID Universitas</label>
+            <div class="form-group" id="id-universitas" style="display: none;">
+              <label>ID Universitas : </label>
               <select>
                 <option value="A">A</option>
                 <option value="B">B</option>
