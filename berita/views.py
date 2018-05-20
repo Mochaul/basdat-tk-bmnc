@@ -49,3 +49,23 @@ def tambah_komentar(request, url_berita):
         cursor.execute(sql)
 
     return HttpResponseRedirect(reverse('berita:detail-berita', kwargs={'url_berita': url_berita}))
+
+
+def tambah_rating(request, url_berita):
+    ip = get_client_ip(request)
+    nilai = request.POST.get('nilai')
+
+    with connection.cursor() as cursor:
+        sql = "INSERT INTO rating VALUES ('%s', '%s', %s);" % (url_berita, ip, nilai)
+        cursor.execute(sql)
+
+    return HttpResponseRedirect(reverse('berita:detail-berita', kwargs={'url_berita': url_berita}))
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip

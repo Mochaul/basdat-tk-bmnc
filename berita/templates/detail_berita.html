@@ -57,12 +57,16 @@
             </form>
         </div>
         <div class="col-lg-2">
-            <form class="">
+            <form class="" method="POST" action="{% url 'berita:tambah-rating' url_berita=url_berita %}">
+                {% csrf_token %}
                 <div class="form-group">
                   <label>Rating</label>
-                  <select class="form-control" name="tipe" id="register_tipe">
-                    <option value="1">1</option>
+                  <select class="form-control" name="nilai" id="register_tipe">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
                     <option value="2">2</option>
+                    <option value="1">1</option>
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
