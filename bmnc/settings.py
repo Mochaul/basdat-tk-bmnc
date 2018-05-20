@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'polling',
     'berita',
     'profil',
+    'core',
 ]
 
 MIDDLEWARE = [
