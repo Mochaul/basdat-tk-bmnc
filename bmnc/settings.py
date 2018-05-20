@@ -112,7 +112,7 @@ if PRODUCTION:
         'HOST': 'dbpg.cs.ui.ac.id',
         'PORT': '',
         'OPTIONS': {
-            'options': '-c search_path=public'
+            'options': '-c search_path=bmnc'
         },
     }
 
