@@ -10,11 +10,13 @@ from core.models import *
 
 
 def buat_berita(request):
+    response = {}
     html = 'buat_berita.html'
     return render(request, html, response)
 
 
 def daftar_berita(request):
+    response = {}
     html = 'daftar_berita.html'
     return render(request, html, response)
 
