@@ -14,7 +14,7 @@ import os
 import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRODUCTION = os.environ.get('DATABASE_URL') != None
+PRODUCTION = os.environ.get('DJANGO_ENV') == 'production'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -106,10 +106,10 @@ DATABASES = {
 if PRODUCTION:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'NAME': 'db086',
+        'USER': 'db086',
+        'PASSWORD': 'thoo2Gai',
+        'HOST': 'dbpg.cs.ui.ac.id',
         'PORT': '',
         'OPTIONS': {
             'options': '-c search_path=public'
