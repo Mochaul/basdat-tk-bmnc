@@ -20,6 +20,9 @@ def register(request):
     html = 'register.html'
     return render(request, html, response)
 
+def authenticate_user(request):
+    return None;
+
 def register_user(request):
     id = Narasumber.objects.last().id + 1
     role = request.POST.get('role')
