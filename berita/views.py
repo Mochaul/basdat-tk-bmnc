@@ -17,6 +17,7 @@ def buat_berita(request):
 
 def daftar_berita(request):
     response = {}
+    response['daftar_berita'] = Berita.objects.raw("SELECT * FROM %s" % (Berita._meta.db_table))
     html = 'daftar_berita.html'
     return render(request, html, response)
 
@@ -24,7 +25,10 @@ def daftar_berita(request):
 def detail_berita(request, url_berita):
     response = {}
     berita = Berita.objects.raw("SELECT * FROM %s WHERE url='%s'" % (Berita._meta.db_table, url_berita))[0]
-    riwayat = Riwayat.objects.raw("SELECT * FROM %s WHERE url_berita='%s'" % (Riwayat._meta.db_table, url_berita))[-1]
+    try:
+        riwayat = Riwayat.objects.raw("SELECT * FROM %s WHERE url_berita='%s'" % (Riwayat._meta.db_table, url_berita))[-1]
+    except Exception:
+        riwayat = None
     daftar_komentar = Komentar.objects.raw("SELECT * FROM %s WHERE url_berita='%s'" % (Komentar._meta.db_table, url_berita))
     rating = Rating.objects.raw("SELECT * FROM %s WHERE url_berita='%s' AND ip_address='%s'" % (Rating._meta.db_table, url_berita, get_client_ip(request)))
     if len(list(rating)) == 1:

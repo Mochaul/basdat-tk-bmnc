@@ -4,6 +4,11 @@
 
 <div class="container">
   <h1>Daftar berita</h1>
+  {% for berita in daftar_berita %}
+    <div>
+      <a href="/berita/{{ berita.url }}">{{ berita.judul }}</a>
+    </div>
+  {% endfor %}
   List url:
   <ul>
     <li><a href="/"> / : daftar berita</a></li>
