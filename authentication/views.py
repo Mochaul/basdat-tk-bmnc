@@ -20,6 +20,9 @@ def register(request):
     html = 'register.html'
     return render(request, html, response)
 
+def authenticate_user(request):
+    return None;
+
 def register_user(request):
     id = Narasumber.objects.last().id + 1
     role = request.POST.get('role')
@@ -37,14 +40,14 @@ def register_user(request):
     with connection.cursor() as cursor:
         sqlSelected = ""
         if role == "mahasiswa":
-            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlSelected = "INSERT INTO mahasiswa VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, username, password, nama, email, tempat_lahir, tanggal_lahir, no_hp, id_univ)
+            sqlSelected = "INSERT INTO mahasiswa VALUES (%d, '%s', '%s');" % (id, no_id, status_kemahasiswaan)
         elif role == "staff":
-            sqlNarasumber = "INSERT INTO narasumberr VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlSelected = "INSERT INTO staf VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlNarasumber = "INSERT INTO narasumberr VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, username, password, nama, email, tempat_lahir, tanggal_lahir, no_hp, id_univ)
+            sqlSelected = "INSERT INTO staf VALUES (%d, '%s', '%s');" % (id, no_id, id_univ)
         else:
-            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlSelected = "INSERT INTO dosen VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, username, password, nama, email, tempat_lahir, tanggal_lahir, no_hp, id_univ)
+            sqlSelected = "INSERT INTO dosen VALUES (%d, '%s', '%s');" % (id, no_id, id_univ)
         cursor.execute(sqlNarasumber)
         cursor.execute(sqlSelected)
 
