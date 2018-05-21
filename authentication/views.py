@@ -25,15 +25,20 @@ def authenticate_user(request):
     password = request.POST.get('password')
 
     response = {}
-    userAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE username='%s'" % (Narasumber._meta.db_table, username))[0]
-    passAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE password='%s'" % (Narasumber._meta.db_table, password))[0]
+    try:
+        userAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE username='%s'" % (Narasumber._meta.db_table, username))[0]
+        passAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE password='%s'" % (Narasumber._meta.db_table, password))[0]
+    except Exception:
+        userAuth = None
+        passAuth = None
+    if userAuth is None and passAuth is None:
+        return HttpResponseRedirect(reverse('authentication:login'))
+        
     response['userAuth'] = userAuth
     response['passAuth'] = passAuth
-
     html = 'profil.html'
     return render(request, html, response)
-
-    #return HttpResponseRedirect(reverse('profil:profil'))
+    
 
 def register_user(request):
     id = Narasumber.objects.last().id + 1
