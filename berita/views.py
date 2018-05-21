@@ -26,6 +26,11 @@ def detail_berita(request, url_berita):
     berita = Berita.objects.raw("SELECT * FROM %s WHERE url='%s'" % (Berita._meta.db_table, url_berita))[0]
     riwayat = Riwayat.objects.raw("SELECT * FROM %s WHERE url_berita='%s'" % (Riwayat._meta.db_table, url_berita))[-1]
     daftar_komentar = Komentar.objects.raw("SELECT * FROM %s WHERE url_berita='%s'" % (Komentar._meta.db_table, url_berita))
+    rating = Rating.objects.raw("SELECT * FROM %s WHERE url_berita='%s' AND ip_address='%s'" % (Rating._meta.db_table, url_berita, get_client_ip(request)))
+    if len(list(rating)) == 1:
+        response['my_rating'] = rating[0].nilai
+    else:
+        response['my_rating'] = None
     response['berita'] = berita
     response['riwayat'] = riwayat
     response['daftar_komentar'] = daftar_komentar
