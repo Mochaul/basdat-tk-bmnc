@@ -15,22 +15,23 @@
           <h1>News Polling Form</h1>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <form class="">
+              <form class="" method="POST" action="{% url 'polling:tambah-polling-berita' url_berita=url_berita %}">
+              {% csrf_token %}
                 <div class="form-group">
                   <label>News URL</label>
-                  <input type="text" class="form-control" placeholder="Enter URL">
+                  <input type="text" class="form-control" placeholder="Enter URL" name="url_berita">
                 </div>
                 <div class="form-group">
                   <label>Start Time</label>
-                  <input type="text" class="form-control" placeholder="Enter Time">
+                  <<input type="time" class="form-control" placeholder="Enter Time" name="polling_start">
                 </div>
                 <div class="form-group">
                   <label>End Time</label>
-                  <input type="text" class="form-control" placeholder="Enter Time">
+                  <input type="time" class="form-control" placeholder="Enter Time" name="polling_end">
                 </div>
                 <div class="form-group">
                   <label>Questions about Polling</label>
-                  <textarea class="form-control" placeholder="Komentar">
+                  <textarea class="form-control" placeholder="Komentar" >
                   </textarea>
                 </div>               
                 <button type="submit" class="btn btn-primary">Submit</button>
