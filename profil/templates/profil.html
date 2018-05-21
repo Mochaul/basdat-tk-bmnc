@@ -31,20 +31,24 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="">Hello, [username] !</h1>
+          <h1 class="">Hello, {{ narasumber.nama }} !</h1>
           <ol class="">
-            <li class="">Full Name &nbsp; &nbsp; : &nbsp; &nbsp;&nbsp;</li>
-            <li>Username &nbsp; &nbsp; :</li>
-            <li>Birth Place &nbsp; &nbsp;:</li>
-            <li class="">Birth Date &nbsp; &nbsp; :</li>
-            <li>Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:</li>
-            <li>Nomor HP &nbsp; &nbsp;:</li>
-            <li>Role &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :</li>
+            <li class="">Full Name &nbsp; &nbsp; : {{ narasumber.nama }}</li>
+            <li>Birth Place &nbsp; &nbsp;: {{ narasumber.tempat }}</li>
+            <li class="">Birth Date &nbsp; &nbsp; : {{ narasumber.tanggal }}</li>
+            <li>Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: {{ narasumber.email }}</li>
+            <li>Nomor HP &nbsp; &nbsp;: {{ narasumber.no_hp }}</li>
+            <li>Role &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {{ role }}</li>
           </ol>
         </div>
       </div>
     </div>
   </div>
+  {% for berita in daftar_berita %}
+  <div>
+    <a href="/berita/{{ berita.url }}">{{ berita.judul }}</a>
+  </div>
+  {% endfor %}
   <div class="py-5 bg-secondary">
     <div class="container">
       <div class="row">

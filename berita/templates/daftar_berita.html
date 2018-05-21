@@ -4,17 +4,22 @@
 
 <div class="container">
   <h1>Daftar berita</h1>
+  {% for berita in daftar_berita %}
+    <div>
+      <a href="/berita/{{ berita.url }}">{{ berita.judul }}</a>
+    </div>
+  {% endfor %}
   List url:
   <ul>
     <li><a href="/"> / : daftar berita</a></li>
     <li><a href="berita/"> berita/ : buat berita</a></li>
-    <li><a href="berita/url-berita/"> berita/url-berita/ : isi/detail dari berita</a></li>
+    <li><a href="berita/accept-sound/"> berita/url-berita/ : isi/detail dari berita</a></li>
     <li><a href="akun/login/"> akun/login/ : login</a></li>
     <li><a href="akun/register/"> akun/register/ : register</a></li>
     <li><a href="polling/"> polling/ : daftar polling</a></li>
     <li><a href="polling/berita/"> polling/berita/ : buat polling berita</a></li>
     <li><a href="polling/biasa/"> polling/biasa/ : buat polling biasa</a></li>
-    <li><a href="profil/username/"> profil/username/ : profil</a></li>
+    <li><a href="profil/1/"> profil/username/ : profil</a></li>
   </ul>
 </div>
 {% endblock %}

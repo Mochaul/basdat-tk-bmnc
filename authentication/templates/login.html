@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="#">
-  <title>BMNC Landing Page</title>
+  <title>BMNC : Login</title>
   <meta name="description" content="BMNC">
   <meta name="keywords" content="BMNC">
   <!-- CSS dependencies -->
@@ -40,7 +40,7 @@
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <form class="">
+              <form class="" method="GET" action="{% url 'authentication:authenticate-user' %}">
                 <div class="form-group">
                   <label>Username</label>
                   <input type="email" class="form-control" placeholder="Enter username">

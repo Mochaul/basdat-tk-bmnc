@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="#">
-  <title>Registration</title>
+  <title>BMNC : Registration</title>
   <meta name="description" content="BMNC">
   <meta name="keywords" content="BMNC">
   <!-- CSS dependencies -->
@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 p-3">
-          <form class="p-4 bg-light" method="POST" action="{% url 'register:register-user'">
+          <form class="p-4 bg-light" method="POST" action="{% url 'authentication:register-user' %}">
             <h4 class="mb-4 text-center">Register as a Narasumber</h4>
             <div class="form-group">
               <label>Role : </label>
@@ -60,7 +60,7 @@
               <input type="email" class="form-control" placeholder="Your email" required="required" name="email"> </div>
             <div class="form-group">
               <label>Nomor HP</label>
-              <input class="form-control" placeholder="Your phone number" name="phone"> </div>
+              <input type="number" class="form-control" placeholder="Your phone number" name="phone"> </div>
             <div class="form-group">
               <label>Status Kemahasiswaan</label>
               <input class="form-control" placeholder="Your student status" required="required" name="student_status"> </div>
@@ -73,7 +73,7 @@
                 <option value="bsi">BSI</option>
               </select> </div>  
             <button type="submit" class="btn mt-4 btn-block p-2 btn-primary">
-              <b>Register as a Narasumber</b>
+              <b>Register</b>
             </button>
           </form>
         </div>
