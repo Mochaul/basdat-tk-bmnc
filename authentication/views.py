@@ -35,15 +35,17 @@ def register_user(request):
     id_univ = request.POST.get('id_univ')
 
     with connection.cursor() as cursor:
+        sqlSelected = ""
         if role == "mahasiswa":
             sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlMahasiswa = "INSERT INTO mahasiswa VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlSelected = "INSERT INTO mahasiswa VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
         elif role == "staff":
             sqlNarasumber = "INSERT INTO narasumberr VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlStaff = "INSERT INTO staf VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlSelected = "INSERT INTO staf VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
         else:
             sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-            sqlMahasiswa = "INSERT INTO dosen VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlSelected = "INSERT INTO dosen VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
         cursor.execute(sqlNarasumber)
+        cursor.execute(sqlSelected)
 
     return HttpResponseRedirect(reverse('authentication:login'))
