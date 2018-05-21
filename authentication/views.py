@@ -21,7 +21,19 @@ def register(request):
     return render(request, html, response)
 
 def authenticate_user(request):
-    return None;
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+
+    response = {}
+    userAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE username='%s'" % (Narasumber._meta.db_table, username))[0]
+    passAuth = Narasumber.objects.raw("SELECT * FROM %s WHERE password='%s'" % (Narasumber._meta.db_table, password))[0]
+    response['userAuth'] = userAuth
+    response['passAuth'] = passAuth
+
+    html = 'profil.html'
+    return render(request, html, response)
+
+    #return HttpResponseRedirect(reverse('profil:profil'))
 
 def register_user(request):
     id = Narasumber.objects.last().id + 1
