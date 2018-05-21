@@ -14,7 +14,7 @@ import os
 import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRODUCTION = os.environ.get('DATABASE_URL') != None
+PRODUCTION = os.environ.get('DJANGO_ENV') == 'production'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'polling',
     'berita',
     'profil',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -78,15 +79,43 @@ WSGI_APPLICATION = 'bmnc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+# #If Using Heroku Environemnt, then Use Database Setting on Heroku
+# if PRODUCTION:
+#     DATABASES['default'] = dj_database_url.config()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'alakbr26',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=bmnc'
+        },
     }
 }
-#If Using Heroku Environemnt, then Use Database Setting on Heroku
+
 if PRODUCTION:
-    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db086',
+        'USER': 'db086',
+        'PASSWORD': 'thoo2Gai',
+        'HOST': 'dbpg.cs.ui.ac.id',
+        'PORT': '',
+        'OPTIONS': {
+            'options': '-c search_path=bmnc'
+        },
+    }
+
 
 
 # Password validation
