@@ -84,6 +84,8 @@ class Mahasiswa(models.Model):
 
 class Narasumber(models.Model):
     id = models.IntegerField(primary_key=True)
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
     nama = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     tempat = models.CharField(max_length=50)

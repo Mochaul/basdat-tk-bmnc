@@ -2,6 +2,11 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.db import connection
+from datetime import datetime
+from core.models import *
 
 response = {}
 
@@ -15,17 +20,30 @@ def register(request):
     html = 'register.html'
     return render(request, html, response)
 
-def register_user(request, url_berita):
-    id = Komentar.objects.last().id + 1
-    tanggal = datetime.now()
-    jam = datetime.time(datetime.now())
-    konten = request.POST.get('konten')
-    nama_user = request.POST.get('nama_user')
-    email_user = request.POST.get('email_user')
-    url_user = request.POST.get('url_user')
+def register_user(request):
+    id = Narasumber.objects.last().id + 1
+    role = request.POST.get('role')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    no_id = request.POST.get('no_id')
+    nama = request.POST.get('nama')
+    tempat_lahir  = request.POST.get('tempat_lahir')
+    tanggal_lahir = request.POST.get('tanggal_lahir')
+    email = request.POST.get('email')
+    no_hp = request.POST.get('phone')
+    status_kemahasiswaan = request.POST.get('student_status')
+    id_univ = request.POST.get('id_univ')
 
     with connection.cursor() as cursor:
-        sql = "INSERT INTO komentar VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
-        cursor.execute(sql)
+        if role == "mahasiswa":
+            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlMahasiswa = "INSERT INTO mahasiswa VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+        elif role == "staff":
+            sqlNarasumber = "INSERT INTO narasumberr VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlStaff = "INSERT INTO staf VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+        else:
+            sqlNarasumber = "INSERT INTO narasumber VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+            sqlMahasiswa = "INSERT INTO dosen VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % (id, tanggal, jam, konten, nama_user, email_user, url_user, url_berita)
+        cursor.execute(sqlNarasumber)
 
-    return HttpResponseRedirect(reverse('berita:detail-berita', kwargs={'url_berita': url_berita}))
+    return HttpResponseRedirect(reverse('authentication:login'))
