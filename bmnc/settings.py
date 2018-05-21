@@ -96,7 +96,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
-        'PORT': '',
+        'PORT': '5432',
         'OPTIONS': {
             'options': '-c search_path=bmnc'
         },
